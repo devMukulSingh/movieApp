@@ -9,9 +9,14 @@ const DialogStyled = styled(Dialog)({
       maxWidth: 800,
       width: '40rem',
       height: '60vh',
-      padding:'5px 10px',
+      padding:'10px 0px 10px 0px',
+      background:'transparent',
+      background:'#000',
+
       '& > svg':{
         cursor:'pointer',
+        color:'#fff',
+        marginLeft:20,
       }
     },
   })

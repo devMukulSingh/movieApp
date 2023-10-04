@@ -1,4 +1,4 @@
-import { Box,styled, AppBar, Toolbar, Typography, Dialog,InputBase, Button } from '@mui/material';
+import { Box,styled, AppBar, Toolbar, Typography, Dialog,InputBase, Button, Drawer } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import logo from "../Assets/movix-logo.png";
 import SearchIcon from '@mui/icons-material/Search';
@@ -54,7 +54,27 @@ const ButtonStyled = styled(Button)({
   ' &:hover':{
     transition:'background 1s ease-in',
     background:'linear-gradient(194deg, rgba(255,76,0,1) 42%, rgba(245,110,0,1) 59%)',
+  },
+  
+})
+const NavLinkBox = styled(Box) (({theme}) => ({
+  marginLeft:'auto',
+  display:'flex',
+  gap:20,
+  alignItems:'center',
+    [theme.breakpoints.down('sm')]:{
+      '&>:nth-child(-n+2)':{
+          display:"none",
+      }
+    }
+}))
+const DrawerStyled = styled(Drawer)({
+  '&.MuiDrawer-root':{
+    color:'#000',
+    width:"20rem",
+    padding:'10px 10px'
   }
+
 })
 /////////////////////////////MAIN FUNCTION STARTS///////////////////////////////////////
 const Header = () => {
@@ -65,6 +85,7 @@ const Header = () => {
   const[ showNavbar, setShowNavbar ] = useState(true);
   const[ lastScrollY, setLastScrollY] = useState(0);
   const[query,setQuery ] = useState('');
+  const[openDrawer,setOpenDrawer] = useState(false);
   
   useEffect( () => {
       window.scrollTo(0,0);
@@ -105,6 +126,12 @@ const Header = () => {
     navigate(`/explore/${mediaType}`);
  }
 
+ const handleOpenDrawer = () => {
+  setOpenDrawer(true);
+ }
+ const onCloseDrawer = ( ) => {
+  setOpenDrawer(false);
+ }
   return (
     <MainBox>
 
@@ -114,12 +141,12 @@ const Header = () => {
               <img src={logo} alt="logo" style={ { width:'3rem' }} />
               <Typography>Movix</Typography>
             </Logo>
-            <Box sx={{ marginLeft:'auto', display:'flex', gap:3,alignItems:'center'}}>
+           <NavLinkBox>
               <ButtonStyled onClick = { () => handleMovieBtn('movie') } > Movies </ButtonStyled>
               <ButtonStyled onClick = { () => handleMovieBtn('tv') } > TV Shows </ButtonStyled>
               <SearchIcon onClick = { () => openSearchBar() } sx={{ cursor:"pointer"}}/>
-              <MenuIconStyled/>
-            </Box>
+              <MenuIconStyled onClick={ handleOpenDrawer}/>
+            </NavLinkBox> 
           </Toolbar>
         </AppBarStyled>
 
@@ -135,6 +162,15 @@ const Header = () => {
           </SearchBar>
 
         </Dialog>
+
+        <DrawerStyled
+          open = {openDrawer}
+          onClose={onCloseDrawer}
+          anchor='right'
+          >
+              <ButtonStyled sx={{ color:'#000'}} onClick = { () => handleMovieBtn('movie') } > Movies </ButtonStyled>
+              <ButtonStyled sx={{ color:'#000'}} onClick = { () => handleMovieBtn('tv') } > TV Shows </ButtonStyled>
+          </DrawerStyled>
 
     </MainBox>
   )

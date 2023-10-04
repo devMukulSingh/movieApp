@@ -37,8 +37,9 @@ const StyledPosterImg = styled(Img) (({theme}) => ({
     },
     [theme.breakpoints.down('sm')]:{
       borderRadius:0,
-
     },
+
+
 }))
 const StyledBackdropImg = styled(Img) (({theme}) =>  ({
   width:'100%',
@@ -50,15 +51,21 @@ const StyledBackdropImg = styled(Img) (({theme}) =>  ({
   },
   [theme.breakpoints.down('sm')]:{
       display:'none'
+  },
+  '&::after':{
+    content:"''",
+    
   }
-})
-)
+
+
+}))
 const DetailsBox = styled(Box)(({theme}) => ({
   gap:'1rem',
    display:'flex',
    flexDirection:'column', 
    zIndex:10,
    [theme.breakpoints.down('md')]:{
+
     alignItems:'center',
 
    }

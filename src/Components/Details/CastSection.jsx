@@ -7,10 +7,11 @@ import Img from '../LazyLoading/Img';
 
 const MainBox = styled(Box) (({theme}) =>  ({
   padding:'1rem 7rem',
+  zIndex:10,
+  position:"relative",
   [theme.breakpoints.down('md')]:{
     padding:'0.5rem 2rem'
-  }
-
+  },
 }))
 const CastImg = styled(Img)({
   width:'9rem',
@@ -22,11 +23,10 @@ const CastImg = styled(Img)({
 const CastCarousel = styled(Box)({
   display:"flex",
   gap:'1rem',
-  overflow:'scroll',
   color:'#000',
-  scrollMargin: 10,
+  overflowX:'scroll',
   padding:'1rem 0',
-  scrollbarWidth:'10px',
+
 })
 const CastDetailsBox = styled(Box)({
   background:'#fff',

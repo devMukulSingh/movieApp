@@ -8,24 +8,28 @@ import { LinearProgress } from '@mui/material';
 /////////////////////////////////////////////////////////////
 
 const MainBox = styled(Box)({
+    padding:'0 !important',
+
 })
 
-const SearchBar = styled(Typography)({
+const SearchBar = styled(Typography) (({theme}) => ({
     background:'#ffffff',
     color:'#000',
     width:'20rem',
     display:"flex",
      padding:'0 0 0 10px', 
-     borderRadius:1,
      zIndex:999,
      marginTop:20,
-})
+     [theme.breakpoints.down('sm')]:{
+        width:'18rem',
+     }
+}))
 const ImgStyled = styled(Img) (({theme}) => ({
-    width:'70vw',
-    height:'65vh',
+    width:'100vw',
+    height:'70vh',
     objectFit:'cover',
     position:'relative',
-
+    objectPosition:"top",
 
     [theme.breakpoints.down('lg')]:{
         width:'100vw',
@@ -72,7 +76,7 @@ const HeroBanner = () => {
                 <ImgStyled src={background} alt="backdropImg" />
 
                     <Box sx={{position:'absolute', display:'flex',flexDirection:"column",alignItems:'center'}}>
-                        <Typography sx={{ color:'#f5f5f5',fontWeight:600,fontSize:18,zIndex:999, textAlign:'center', marginTop:10}}>
+                        <Typography sx={{ color:'#bdc3c7',fontWeight:600,fontSize:'1.8rem',zIndex:999, textAlign:'center', marginTop:10}}>
                             Milions of Movies and TV Shows to discover.Explore Now
                         </Typography>
                         <SearchBar>

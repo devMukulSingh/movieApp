@@ -7,14 +7,21 @@ import TopRated from '../Components/Home/TopRated.jsx';
 
 /////////////////////////////////
 const MainBox = styled(Box) (({theme}) => ({
-  width:'100%',
-  height:"90vh",
+  // height:"90vh",
   display:'flex',
   flexDirection:'column',
   gap:'1rem',
+  padding:'0 !important',
   [theme.breakpoints.down('sm')]:{
     gap:0
+  },
+  overflow:'auto',
+  scrollbarWidth:'none',
+  '&::-webkit-scrollbar':{
+    display:"none !important",
+
   }
+
 }))
 
 /////////////////////////////////MAIN FUNCTION STARTS//////////////////////

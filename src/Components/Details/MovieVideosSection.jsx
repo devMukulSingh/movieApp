@@ -27,7 +27,7 @@ const MovieVideosSection = ({mediaType,id}) => {
         !loading && data?.results &&
         <MainBox>
           <Typography sx={{ fontSize:20, fontWeight:600}}>Official Videos</Typography>
-          <Box sx={{display:'flex',gap:'1rem',overflowX:'scroll',padding:'1rem 0',cursor:"pointer"}}>
+          <Box sx={{display:'flex',gap:'1rem',overflowX:'scroll',position:'relative'}}>
             {
               !loading &&
               data?.results?.map( (video,key) => {

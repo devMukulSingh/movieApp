@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Box, ToggleButton, ToggleButtonGroup, Typography, styled,Divider} from "@mui/material";
 import useFetch from '../../Hooks/useFetch';
 import CarouselComp from './CarouselComp.jsx';
@@ -9,7 +9,7 @@ const MainBox = styled(Box) (({theme}) =>  ({
   [theme.breakpoints.down('lg')]:{
     margin:0,
     width:'100vw',
-    padding:'20px',
+    padding:'0 20px',
   },
   margin:'0 auto 0rem auto',
 
@@ -31,16 +31,12 @@ const TopRatedBox = styled(Box) (({theme}) =>  ({
   display:"flex",
    justifyContent:'space-between',
    alignItems:'center',
-   marginBottom:"1rem",
 
-}))
-const CarouselBox = styled(Box) (({theme}) => ({
- 
+   [theme.breakpoints.down('sm')]:{
+    flexDirection:'column',
+    gap:20,
+   }
 
-}))
-const DividerStyled = styled(Divider) (({theme}) => ({
-  borderColor:'#fff',
-  margin:'2rem auto', 
 }))
 
 
@@ -60,7 +56,10 @@ const TopRated = () => {
 
   }
   return (
-    <MainBox>   
+    <>
+      {
+      !loading &&
+      <MainBox>   
           <TopRatedBox >
             <Typography sx={{fontSize:'1.3rem',fontWeight:600}}>What's TopRated</Typography>
             <ToggleButtonGroup sx={{background: '#fff', width:'12rem',padding:'2px 5px',borderRadius:10,height:'2.4rem',}}
@@ -77,17 +76,18 @@ const TopRated = () => {
             </ToggleButtonGroup>
         </TopRatedBox>
           
-        <CarouselBox>
+        <Box>
         {
             !loading &&
             <CarouselComp data={data?.results} loading={loading}/>
             
         }
-        <DividerStyled  />
 
-        </CarouselBox>
+        </Box>
 
     </MainBox>
+    }
+    </>
 
   )
 }

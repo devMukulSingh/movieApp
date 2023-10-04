@@ -7,12 +7,12 @@ import CarouselComp from './CarouselComp';
 
 const MainBox = styled(Box) (({theme}) =>  ({
   width:"70vw",
+  margin:'1rem auto 0 auto',
   [theme.breakpoints.down('lg')]:{
-    margin:0,
+    margin:'1rem 0 0 0',
     width:'100vw',
-    padding:'20px',
+    padding:'0 20px',
   },
-  margin:'0 auto 0rem auto',
 
 }))
 const ToggleButtonStyled = styled(ToggleButton)({
@@ -32,7 +32,12 @@ const TrendingBox = styled(Box) (({theme}) =>  ({
   display:"flex",
    justifyContent:'space-between',
    alignItems:'center',
-   marginBottom:"1rem",
+  //  marginBottom:"1rem",
+
+   [theme.breakpoints.down('sm')]:{
+    flexDirection:'column',
+    gap:20,
+   }
 
 }))
 const CarouselBox = styled(Box) (({theme}) => ({
@@ -59,6 +64,9 @@ const Trending = () => {
   }
   return (
     <>
+    {
+      !loading &&
+      
         <MainBox>   
 
           <TrendingBox >
@@ -87,6 +95,7 @@ const Trending = () => {
           </CarouselBox>
 
       </MainBox>
+  }
   </>
   )
 }

@@ -9,9 +9,9 @@ const MainBox = styled(Box) (({theme}) =>  ({
   [theme.breakpoints.down('lg')]:{
     margin:0,
     width:'100vw',
-    padding:'20px',
+    padding:'0 20px',
   },
-  margin:'0 auto 0rem auto',
+  margin:'0 auto 0 auto',
 
 }))
 const ToggleButtonStyled = styled(ToggleButton)({
@@ -31,7 +31,11 @@ const PopularBox = styled(Box) (({theme}) =>  ({
   display:"flex",
    justifyContent:'space-between',
    alignItems:'center',
-   marginBottom:"1rem",
+
+   [theme.breakpoints.down('sm')]:{
+    flexDirection:'column',
+    gap:20,
+   }
 
 }))
 const CarouselBox = styled(Box) (({theme}) => ({
@@ -58,36 +62,46 @@ const Popular = () => {
 
   }
   return (
-    <MainBox>   
-          <PopularBox >
-            <Typography sx={{fontSize:'1.3rem',fontWeight:600}}>What's Popular</Typography>
-            <ToggleButtonGroup sx={{background: '#fff', width:'12rem',padding:'2px 5px',borderRadius:10,height:'2.4rem',}}
-              exclusive
-              onChange={handleChange}
-              value={btnValue}
-              >
-              <ToggleButtonStyled value="movie" >
-                Movies
-              </ToggleButtonStyled>
-              <ToggleButtonStyled value="tv" >
-                TV Shows
-              </ToggleButtonStyled>
-            </ToggleButtonGroup>
-        </PopularBox>
-          
-        <CarouselBox>
-        {
-            !loading &&
-            <CarouselComp data={data?.results} loading={loading}/>
+    <>
+    {
+      !loading && 
+
+       <MainBox>   
+            <PopularBox >
+              <Typography sx={{fontSize:'1.3rem',fontWeight:600}}>What's Popular</Typography>
+              <ToggleButtonGroup sx={{background: '#fff', width:'12rem',padding:'2px 5px',borderRadius:10,height:'2.4rem',}}
+                exclusive
+                onChange={handleChange}
+                value={btnValue}
+                >
+                <ToggleButtonStyled value="movie" >
+                  Movies
+                </ToggleButtonStyled>
+                <ToggleButtonStyled value="tv" >
+                  TV Shows
+                </ToggleButtonStyled>
+              </ToggleButtonGroup>
+          </PopularBox>
             
-        }
-        <DividerStyled  />
+          <CarouselBox>
+          {
+              !loading &&
+              <CarouselComp data={data?.results} loading={loading}/>
+              
+          }
+          <DividerStyled  />
 
-        </CarouselBox>
+          </CarouselBox>
 
-    </MainBox>
+      </MainBox>
 
+  }
+
+  </>
   )
 }
+
+
+
 
 export default Popular
