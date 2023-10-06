@@ -104,15 +104,17 @@ const Explore = () => {
     setLoading(true);
     const res = await fetchDataFromApi(`/discover/${mediaType}`,filters);
     setApiResult(res);
+    setPageNum( prev => prev+1);
     setLoading(false);
   }
   const fetchNextPage = async() => {
-    setLoading(true);
-    const res = await fetchDataFromApi(`/discover/${mediaType}`,filters);
+    const res = await fetchDataFromApi(`/discover/${mediaType}?page=${pageNum}`,filters);
     setApiResult({
       ...apiResult, results:[...apiResult.results, ...res.results]
     });
-    setLoading(false);
+    setPageNum( prev => prev+1);
+
+  
   }
 
   const handleFilters = (selectedItems,action) => {
@@ -194,7 +196,7 @@ const Explore = () => {
                   return(
                     <StyledGrid items lg={3} md={4} sm={6} xs={12} key={index}>
                       <InfiniteScroll
-                        dataLength={apiResult?.results?.length || [] }
+                        dataLength={apiResult?.results?.length || 0 }
                         next={fetchNextPage}
                         hasMore={ pageNum <= apiResult?.total_pages }
                         >
