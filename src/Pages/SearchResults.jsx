@@ -51,13 +51,13 @@ const SearchResults = () => {
   }
 
   const fetchNextPage = async() => {
-    setLoading(true)
+
     const res = await fetchDataFromApi(`/search/movie?query=${query}&page=${pageNum}`);
     setApiResult({
       ...apiResult, results:[...apiResult.results,...res.results]
     });
     setPageNum(page => page+1);
-    setLoading(false);
+
   }
 
   ////////////////////////////////////////////////////JSX PART///////////////////////////////////////////////////
