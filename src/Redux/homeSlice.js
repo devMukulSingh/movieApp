@@ -6,7 +6,7 @@ export const homeSlice = createSlice({
     initialState : {
         genres:{},
         url:{},
-        pageNum:[]
+        pageNum:[] 
     },
     reducers:{
         getApiConfigurations : ( state,action ) => {

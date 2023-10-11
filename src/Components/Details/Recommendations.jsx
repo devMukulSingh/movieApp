@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box,Typography, styled,Divider} from "@mui/material";
 import useFetch from '../../Hooks/useFetch';
-import CarouselComp from '../Home/CarouselComp.jsx';
+import CarouselRecommended from './CaruselRecommended';
 ////////////////////////////////////////////////////////////////////////////////
 
 const MainBox = styled(Box) (({theme}) =>  ({
@@ -55,7 +55,7 @@ const Recommendations = ( { mediaType,id} ) => {
             <CarouselBox>
             {
                 !loading &&
-                <CarouselComp data={data?.results} loading={loading} recommended={true}/>
+                <CarouselRecommended data={data?.results} loading={loading} />
 
             }
             </CarouselBox>

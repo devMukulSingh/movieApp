@@ -14,7 +14,6 @@ const MainBox = styled(Box)({
     background:'#020C1B',
     padding:"3rem 0",
     marginTop:'1.5rem',
-    // width:"100vw",
 
   })
   const FooterText = styled(Typography)({

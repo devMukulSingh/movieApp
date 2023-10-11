@@ -2,8 +2,8 @@ import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import React from 'react';
 import { Box,styled } from "@mui/material";
-import MovieCardHome from './MovieCardHome.jsx';
 import { Link } from "react-router-dom";
+import MovieCardRecommended from "./MovieCardRecommended.jsx";
 ///////////////////////////////////////////////
 const responsive = {
   desktop: {
@@ -31,7 +31,7 @@ const MainBox = styled(Box)({
 })
 
 //////////////////////MAIN FUNCTION STARTS//////////////////////////////
-const CarouselComp = ( { data,loading } ) => {
+const CarouselRecommended = ( { data,loading } ) => {
 
   return (
     <>
@@ -69,7 +69,7 @@ const CarouselComp = ( { data,loading } ) => {
 
                 return(
                 <Link style={{ textDecoration:'none',marginLeft:20}} to = {`/${mediaType}/${movie.id}`} key={index}>
-                  <MovieCardHome movie={movie} loading={loading} key={index} />
+                  <MovieCardRecommended movie={movie} loading={loading} key={index} />
                 </Link>  
                   )
                 })
@@ -83,4 +83,4 @@ const CarouselComp = ( { data,loading } ) => {
   )
 }
 
-export default CarouselComp
+export default CarouselRecommended

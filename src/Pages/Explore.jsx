@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import MovieCardSearch from '../Components/Search/MovieCardSearch';
 import Select from 'react-select';
 import useFetch from "../Hooks/useFetch";
+import { useDispatch } from 'react-redux';
+import { getExplorePageLoading } from "../Redux/loadingSlice";
 //////////////////////////////////////////////////////////////////////
 const MainBox = styled(Box)(({theme}) => ({
   marginTop:'10vh',
@@ -79,21 +81,27 @@ const Explore = () => {
 
   ];
 
+  const dispatch = useDispatch();
   const { mediaType } = useParams();
   const [apiResult,setApiResult] = useState(null);
   const [ pageNum,setPageNum ] = useState(1);
   const [ genres, setGenres ] = useState(null);
   const [sortByFilter, setSortByFilter ] = useState(null);
-  const [loading,setLoading] = useState(false);
+  const [loading,setLoading] = useState(null);
+
 
 
   useEffect( () => {
-    filters = {};
+
+    filters = {}; 
     setApiResult(null);
     setSortByFilter(null);
     setGenres(null);
     setPageNum(1);
     fetchInitalData();
+    dispatch(getExplorePageLoading(loading));
+
+
   },[mediaType]);
 
   
@@ -101,6 +109,7 @@ const Explore = () => {
   const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
 
   const fetchInitalData = async() => {
+
     setLoading(true);
     const res = await fetchDataFromApi(`/discover/${mediaType}`,filters);
     setApiResult(res);

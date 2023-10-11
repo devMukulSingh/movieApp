@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
 import CloseIcon from '@mui/icons-material/Close';
-import { Box,styled, Dialog } from "@mui/material";
+import { styled, Dialog } from "@mui/material";
 
-const DialogStyled = styled(Dialog)({
+const DialogStyled = styled(Dialog) (({theme}) => ({
     '.css-1t1j96h-MuiPaper-root-MuiDialog-paper':{
       boxShadow:'none',
       maxWidth: 800,
@@ -17,9 +17,15 @@ const DialogStyled = styled(Dialog)({
         cursor:'pointer',
         color:'#fff',
         marginLeft:20,
-      }
+      },
+ 
+      [theme.breakpoints.down('sm')]:{
+        height: '45vh',
+        margin:'0',
+      },
     },
-  })
+
+  }))
 const VideoPlayer = ( { openVideo,setOpenVideo,id} ) => {
 
 

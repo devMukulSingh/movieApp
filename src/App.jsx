@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react'
 import { fetchDataFromApi } from './Utils/api'
-import {  useDispatch } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { getApiConfigurations } from './Redux/homeSlice';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './Pages/HomePage';
@@ -10,7 +10,7 @@ import SearchResults from "./Pages/SearchResults";
 import Explore from "./Pages/Explore";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-
+/////////////////////////////////////////////////////
 
 const App = () => {
 
@@ -29,19 +29,24 @@ const App = () => {
     dispatch(getApiConfigurations(url));
   }
 
-  return (
+  const { heroBannerLoading, trendingLoading, detailsLoading, exploreLoading, searchLoading }
+          = useSelector( state => state.loading );
+   return (
     <>
-    <BrowserRouter>
-    <Header/>
-      <Routes>
-        <Route path = "/" element = {<HomePage/>}/>
-        <Route path = "/:mediaType/:id" element = {<DetailsPage/>} />
-        <Route path = "/search/:query" element = {<SearchResults/>} />
-        <Route path = "/explore/:mediaType" element = {<Explore/>} />
-        <Route path = "*" element = {<Error/>} />
-      </Routes>
-      <Footer/> 
-    </BrowserRouter>
+        <BrowserRouter>
+          <Header/>
+            <Routes>
+              <Route path = "/" element = {<HomePage/>}/>
+              <Route path = "/:mediaType/:id" element = {<DetailsPage/>} />
+              <Route path = "/search/:query" element = {<SearchResults/>} />
+              <Route path = "/explore/:mediaType" element = {<Explore/>} />
+              <Route path = "*" element = {<Error/>} />
+            </Routes>
+            {!heroBannerLoading && !trendingLoading && !detailsLoading && !exploreLoading && !searchLoading &&
+            <Footer/> }
+        </BrowserRouter>
+
+
     </>
   )
 }

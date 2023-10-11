@@ -3,7 +3,7 @@ import { fetchDataFromApi } from "../Utils/api";
 
 
 const useFetch = (url) => {
-    const[loading,setLoading] = useState(false);
+    const[loading,setLoading] = useState(null);
     const[data, setData] = useState(null);
     const[error, setError ] = useState(null);
 

@@ -69,10 +69,12 @@ const NavLinkBox = styled(Box) (({theme}) => ({
     }
 }))
 const DrawerStyled = styled(Drawer)({
-  '&.MuiDrawer-root':{
-    color:'#000',
-    width:"20rem",
-    padding:'10px 10px'
+
+  '.css-70lijl-MuiPaper-root-MuiDrawer-paper':{
+    padding:'5px 10px',
+    background:'#010D16',
+    marginTop:'4rem',
+
   }
 
 })
@@ -124,6 +126,7 @@ const Header = () => {
 
  const handleMovieBtn = (mediaType) => {
     navigate(`/explore/${mediaType}`);
+    setOpenDrawer(false);
  }
 
  const handleOpenDrawer = () => {
@@ -166,10 +169,12 @@ const Header = () => {
         <DrawerStyled
           open = {openDrawer}
           onClose={onCloseDrawer}
-          anchor='right'
+          anchor='top'
+          elevation={30}
+          hideBackdrop={true}
           >
-              <ButtonStyled sx={{ color:'#000'}} onClick = { () => handleMovieBtn('movie') } > Movies </ButtonStyled>
-              <ButtonStyled sx={{ color:'#000'}} onClick = { () => handleMovieBtn('tv') } > TV Shows </ButtonStyled>
+              <ButtonStyled sx={{ width:'6rem'}} onClick = { () => handleMovieBtn('movie') } > Movies </ButtonStyled>
+              <ButtonStyled sx={{ width:'6rem'}} onClick = { () => handleMovieBtn('tv') } > TV Shows </ButtonStyled>
           </DrawerStyled>
 
     </MainBox>

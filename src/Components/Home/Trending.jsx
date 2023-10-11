@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, ToggleButton, ToggleButtonGroup, Typography, styled,Divider } from "@mui/material";
 import useFetch from '../../Hooks/useFetch';
 import CarouselComp from './CarouselComp';
+import { getTrendingSectionLoading } from "../../Redux/loadingSlice.js";
+import { useDispatch } from 'react-redux';
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -52,14 +54,19 @@ const DividerStyled = styled(Divider) (({theme}) => ({
 ////////////////////////MAIN FUNCTION STARTs/////////////////////////////////////////
 const Trending = () => {
  
+  const dispatch = useDispatch();
   const[btnValue,setBtnValue] = useState('day');
   const[timeFrame,setTimeFrame] = useState('day');
 
   const{ data,loading } = useFetch(`/trending/movie/${timeFrame}`); 
+  dispatch(getTrendingSectionLoading(loading));
+
+  
   const handleChange = (e,newAlignment) => {
     e.preventDefault();
     setBtnValue(newAlignment);
     setTimeFrame(e.target.value);
+
 
   }
   return (

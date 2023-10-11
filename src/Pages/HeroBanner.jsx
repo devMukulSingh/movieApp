@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Box, styled, InputBase, Button, Typography } from "@mui/material";
 import useFetch from '../Hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Img from '../Components/LazyLoading/Img.jsx';
 import { LinearProgress } from '@mui/material';
+import { getHeroSectionLoading } from '../Redux/loadingSlice';
 /////////////////////////////////////////////////////////////
 
 const MainBox = styled(Box)({
@@ -48,6 +49,8 @@ const InputBaseStyled = styled(InputBase)({
 })
 /////////////////////////////MAIN FUCNTION STARTS//////////////////////////////////
 const HeroBanner = () => {
+
+    const dispatch = useDispatch();
     const[background, setBackground] = useState('');
     const[query,setQuery ] = useState();
     const navigate = useNavigate();
@@ -56,6 +59,7 @@ const HeroBanner = () => {
 
     useEffect( () => {
         if(data){
+            dispatch(getHeroSectionLoading(loading));  
             const bg = url.backdrop + data?.results[Math.floor(Math.random()* 20 )]?.backdrop_path;
             setBackground(bg);
         }

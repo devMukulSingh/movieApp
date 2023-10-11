@@ -4,6 +4,7 @@ import HeroBanner from './HeroBanner';
 import Trending from '../Components/Home/Trending.jsx';
 import Popular from '../Components/Home/Popular.jsx';
 import TopRated from '../Components/Home/TopRated.jsx';
+import { useSelector } from 'react-redux';
 
 /////////////////////////////////
 const MainBox = styled(Box) (({theme}) => ({
@@ -27,14 +28,21 @@ const MainBox = styled(Box) (({theme}) => ({
 /////////////////////////////////MAIN FUNCTION STARTS//////////////////////
 const Home = () => {
 
+    const {  heroBannerLoading, trendingLoading }  = useSelector( state => state.loading);
+    console.log(heroBannerLoading);
+
   return (
+    <>
+
+        <MainBox> 
+            <HeroBanner/>
+            <Trending />
+            <Popular />
+            <TopRated />
+          </MainBox>
       
-        <MainBox>
-          <HeroBanner/>
-          <Trending />
-          <Popular />
-          <TopRated/>
-        </MainBox>
+      
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Grid, Typography,styled} from '@mui/material';
+import { CircularProgress, Grid, Typography,styled} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import MovieCardSearch from "../Components/Search/MovieCardSearch";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Link } from "react-router-dom";
 import { getPageNum } from '../Redux/homeSlice';
+import { getSearchPageLoading } from '../Redux/loadingSlice';
 /////////////////////////////////////////////////////////////////////////////
 
 const MainGrid = styled(Grid) (({theme}) =>  ({
@@ -33,13 +34,13 @@ const SearchResults = () => {
   const[pageNum,setPageNum] = useState(1);
   const[apiResult,setApiResult] = useState(null);
   const{ query } = useParams();
-  const{ url } = useSelector(state => state.home);
   const dispatch = useDispatch();
 
   useEffect( () => {
     dispatch(getPageNum(pageNum));
     setPageNum(1);
     fetchInitalData();
+    dispatch(getSearchPageLoading(loading));
   },[query]);
 
   const fetchInitalData = async() => {

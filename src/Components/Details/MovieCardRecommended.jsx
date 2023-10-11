@@ -34,7 +34,7 @@ const MovieTitle = styled(Typography) (({theme}) => ({
 }))
   
 ///////////////////////////////////////MAIN FUNCTION STARTS/////////////////////////////
-const MovieCardHome = ( { movie,loading }) => {
+const MovieCardRecommended = ( { movie,loading }) => {
  
     const{ url } = useSelector(state => state.home);
     const movieImg = url?.backdrop + movie?.poster_path;
@@ -44,8 +44,8 @@ const MovieCardHome = ( { movie,loading }) => {
     <>
     {
       !loading &&
-
-        <MainBox>
+      
+        <MainBox sx= { { height:'37rem' } } >
           
           <MovieImg src={movie?.poster_path ? movieImg : emptyImg} alt="movieimg" />
 
@@ -63,4 +63,4 @@ const MovieCardHome = ( { movie,loading }) => {
   )
 }
 
-export default MovieCardHome
+export default MovieCardRecommended
