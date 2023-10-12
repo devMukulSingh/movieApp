@@ -12,6 +12,8 @@ import { getDetailsPageLoading } from "../Redux/loadingSlice.js"
 
 const MainBox = styled(Box) (({theme})=> ({
   marginTop:'10vh',
+  // overflow:'',
+
   [theme.breakpoints.down('sm')]:{
     marginTop:0,
   }

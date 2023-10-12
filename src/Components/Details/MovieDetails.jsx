@@ -25,7 +25,7 @@ const MovieDetailsBox = styled(Box) (({theme}) => ({
 
     },
     [theme.breakpoints.down('sm')]:{
-      padding:'0 1.5rem',
+      padding:'0 20px',
     }
 }))
 const StyledPosterImg = styled(Img) (({theme}) => ({
@@ -37,6 +37,7 @@ const StyledPosterImg = styled(Img) (({theme}) => ({
     },
     [theme.breakpoints.down('sm')]:{
       borderRadius:0,
+      width:'100vw',
     },
 
 
@@ -45,17 +46,13 @@ const StyledBackdropImg = styled(Img) (({theme}) =>  ({
   width:'100%',
   opacity:'0.5 !important',
   [theme.breakpoints.down('lg')]:{
-    height:"62rem",
+    height:"63rem",
     objectFit:'cover',
     opacity:'0.3 !important'
   },
   [theme.breakpoints.down('sm')]:{
       display:'none'
   },
-  '&::after':{
-    content:"''",
-    
-  }
 
 
 }))

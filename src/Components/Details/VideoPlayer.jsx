@@ -20,7 +20,7 @@ const DialogStyled = styled(Dialog) (({theme}) => ({
       },
  
       [theme.breakpoints.down('sm')]:{
-        height: '45vh',
+        height: '50vh',
         margin:'0',
       },
     },

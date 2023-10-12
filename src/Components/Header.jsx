@@ -4,6 +4,7 @@ import logo from "../Assets/movix-logo.png";
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Close from '@mui/icons-material/Close';
 /////////////////////////////////////////////////////////////
 
 const MainBox = styled(Box)({
@@ -74,6 +75,8 @@ const DrawerStyled = styled(Drawer)({
     padding:'5px 10px',
     background:'#010D16',
     marginTop:'4rem',
+    position:'relative',
+    width:'100%'
 
   }
 
@@ -139,7 +142,7 @@ const Header = () => {
     <MainBox>
 
         <AppBarStyled position="fixed" sx={ showNavbar ? {} :  {display:'none'} } >
-          <Toolbar sx={{ display:'flex', gap:1}}>
+          <Toolbar sx={{ display:'flex', gap:1, alignItems:'center',justifyContent:'center'}}>
             <Logo to="/">
               <img src={logo} alt="logo" style={ { width:'3rem' }} />
               <Typography>Movix</Typography>
@@ -172,7 +175,8 @@ const Header = () => {
           anchor='top'
           elevation={30}
           hideBackdrop={true}
-          >
+          > 
+              <Close onClick = { onCloseDrawer } sx={{ color:'#fff', position:'absolute',right:15}} />
               <ButtonStyled sx={{ width:'6rem'}} onClick = { () => handleMovieBtn('movie') } > Movies </ButtonStyled>
               <ButtonStyled sx={{ width:'6rem'}} onClick = { () => handleMovieBtn('tv') } > TV Shows </ButtonStyled>
           </DrawerStyled>

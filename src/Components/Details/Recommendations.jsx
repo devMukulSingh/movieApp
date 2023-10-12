@@ -9,9 +9,9 @@ const MainBox = styled(Box) (({theme}) =>  ({
   width:'85vw',
   margin:'0 auto',
   [theme.breakpoints.down('lg')]:{
-    margin:0,
-    width:'100vw',
-    padding:'0 2rem'
+    // margin:0,
+    // width:'90vw',
+    // padding:'0 1rem'
   },
 
 }))
@@ -19,17 +19,16 @@ const RecommendationBox = styled(Box) (({theme}) =>  ({
 
     display:"flex",
    [theme.breakpoints.down('lg')]:{
-    width:'100vw',
-    padding:'20px',
+    // padding:'20px',
    }
 }))
 const CarouselBox = styled(Box) (({theme}) => ({
     [theme.breakpoints.down('lg')]:{
-        width:'100vw',
+        // width:'100vw',
         margin:0,
     },
     [theme.breakpoints.down('sm')]:{
-        padding:'10px'
+        // padding:'10px'
        }
 }))
 const DividerStyled = styled(Divider) (({theme}) => ({

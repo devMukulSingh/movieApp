@@ -12,6 +12,9 @@ const MainBox = styled(Box) (({theme}) =>  ({
   [theme.breakpoints.down('md')]:{
     padding:'0.5rem 2rem'
   },
+  [theme.breakpoints.down('sm')]:{
+    padding:'0.5rem 1rem'
+  },
 }))
 const CastImg = styled(Img)({
   width:'9rem',

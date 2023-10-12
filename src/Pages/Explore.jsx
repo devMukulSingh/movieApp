@@ -92,14 +92,14 @@ const Explore = () => {
 
 
   useEffect( () => {
-
+    
+    dispatch(getExplorePageLoading(loading));
     filters = {}; 
     setApiResult(null);
     setSortByFilter(null);
     setGenres(null);
     setPageNum(1);
     fetchInitalData();
-    dispatch(getExplorePageLoading(loading));
 
 
   },[mediaType]);
@@ -152,8 +152,6 @@ const Explore = () => {
       setPageNum(1);
       fetchInitalData();
   }
-
-
 
   return (
       <>

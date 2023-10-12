@@ -12,6 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
   ::-webkit-scrollbar{
     background:transparent;
     border-radius:10px;
@@ -31,4 +32,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+@media(max-width:528px){
+  ::-webkit-scrollbar{
+    display: none;
+  }
+}

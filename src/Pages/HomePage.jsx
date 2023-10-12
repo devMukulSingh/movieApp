@@ -33,6 +33,8 @@ const Home = () => {
 
   return (
     <>
+      { 
+        !heroBannerLoading && 
 
         <MainBox> 
             <HeroBanner/>
@@ -41,6 +43,7 @@ const Home = () => {
             <TopRated />
           </MainBox>
       
+        }
       
     </>
   )

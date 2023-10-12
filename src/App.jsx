@@ -42,7 +42,11 @@ const App = () => {
               <Route path = "/explore/:mediaType" element = {<Explore/>} />
               <Route path = "*" element = {<Error/>} />
             </Routes>
-            {!heroBannerLoading && !trendingLoading && !detailsLoading && !exploreLoading && !searchLoading &&
+            {!heroBannerLoading &&
+             !trendingLoading &&
+              !detailsLoading &&
+               !exploreLoading &&
+                !searchLoading &&
             <Footer/> }
         </BrowserRouter>
 
