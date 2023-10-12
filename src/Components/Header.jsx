@@ -69,18 +69,16 @@ const NavLinkBox = styled(Box) (({theme}) => ({
       }
     }
 }))
-const DrawerStyled = styled(Drawer)({
-
-  '.css-70lijl-MuiPaper-root-MuiDrawer-paper':{
+const DrawerStyled ={
     padding:'5px 10px',
-    background:'#010D16',
+    background:'#010D16 !important',
     marginTop:'4rem',
     position:'relative',
     width:'100%'
 
   }
 
-})
+
 /////////////////////////////MAIN FUNCTION STARTS///////////////////////////////////////
 const Header = () => {
   const location = useLocation();
@@ -169,17 +167,18 @@ const Header = () => {
 
         </Dialog>
 
-        <DrawerStyled
+        <Drawer
           open = {openDrawer}
           onClose={onCloseDrawer}
           anchor='top'
           elevation={30}
           hideBackdrop={true}
+          PaperProps={ { sx: DrawerStyled }}
           > 
               <Close onClick = { onCloseDrawer } sx={{ color:'#fff', position:'absolute',right:15}} />
               <ButtonStyled sx={{ width:'6rem'}} onClick = { () => handleMovieBtn('movie') } > Movies </ButtonStyled>
               <ButtonStyled sx={{ width:'6rem'}} onClick = { () => handleMovieBtn('tv') } > TV Shows </ButtonStyled>
-          </DrawerStyled>
+          </Drawer>
 
     </MainBox>
   )
